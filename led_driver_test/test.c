@@ -68,6 +68,12 @@ TEST_F(SetupTest, TurnOffAnyLed)
     EXPECT_EQ(0xff7f, virtualLeds);
 }
 
+TEST_F(SetupTest, LedMemoryIsNotReadable)
+{
+    virtualLeds = 0xffff;
+    LedDriver_TurnOn(8);
+    EXPECT_EQ(0x80, virtualLeds);
+}
 
 
 int main(int argc, char** argv)
