@@ -8,6 +8,11 @@ enum {ALL_LEDS_ON = ~0, ALL_LEDS_OFF = ~ALL_LEDS_ON};
 static uint16_t * ledsAddress;
 static uint16_t ledsImage;
 
+static void updateHardware(void)
+{
+    *ledsAddress = ledsImage;
+}
+
 void LedDriver_Create(uint16_t * address)
 {
     ledsAddress = address;
@@ -38,8 +43,8 @@ void LedDriver_TurnOff(int ledNumber)
 
 void LedDriver_TurnAllOn(void)
 {
-    ledsImage =  ALL_LEDS_ON;
-    *ledsAddress = ledsImage;
+    ledsImage = ALL_LEDS_ON;
+    updateHardware();
 }
 
 

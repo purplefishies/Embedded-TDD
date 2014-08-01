@@ -75,6 +75,21 @@ TEST_F(SetupTest, LedMemoryIsNotReadable)
     EXPECT_EQ(0x80, virtualLeds);
 }
 
+TEST_F(SetupTest, UpperAndLowerBounds)
+{
+    LedDriver_TurnOn(1);
+    LedDriver_TurnOn(16);
+    EXPECT_EQ(0x8001, virtualLeds);
+}
+
+TEST_F(SetupTest, OutOfBoundsChangesNothing)
+{
+    LedDriver_TurnOn(-1);
+    LedDriver_TurnOn(0);
+    LedDriver_TurnOn(17);
+    LedDriver_TurnOn(3141);
+    EXPECT_EQ(0, virtualLeds);
+}
 
 int main(int argc, char** argv)
 {
