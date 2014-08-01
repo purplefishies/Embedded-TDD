@@ -3,7 +3,7 @@
 
 #include "LedDriver.h"
 
-enum {ALL_LEDS_OFF = 0, ALL_LEDS_ON = ~0};
+enum {ALL_LEDS_ON = ~0, ALL_LEDS_OFF = ~ALL_LEDS_ON};
 
 static uint16_t * ledsAddress;
 static uint16_t ledsImage;
@@ -36,7 +36,7 @@ void LedDriver_TurnOff(int ledNumber)
 
 void LedDriver_TurnAllOn(void)
 {
-    *ledsAddress = 0xffff;
+    *ledsAddress = ALL_LEDS_ON;
 }
 
 
