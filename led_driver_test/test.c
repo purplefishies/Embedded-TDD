@@ -55,6 +55,14 @@ TEST_F(SetupTest, TurnOnMultipleLeds)
     EXPECT_EQ(0x180, virtualLeds);
 }
 
+TEST_F(SetupTest, TurnOffAnyLed)
+{
+    LedDriver_TurnOn(9);
+    LedDriver_TurnOn(8);
+    LedDriver_TurnOff(8);
+    EXPECT_EQ(0x100, virtualLeds);
+}
+
 
 
 int main(int argc, char** argv)
