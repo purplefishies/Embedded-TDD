@@ -21,7 +21,7 @@ void LedDriver_Destroy(void)
 
 void LedDriver_TurnOn(int ledNumber)
 {
-    *ledsAddress |= (1 << ledNumber);
+    *ledsAddress |= (1 << ledNumber - 1);
 }
 
 
