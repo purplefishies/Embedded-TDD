@@ -63,10 +63,9 @@ TEST_F(SetupTest, AllOn)
 
 TEST_F(SetupTest, TurnOffAnyLed)
 {
-    LedDriver_TurnOn(9);
-    LedDriver_TurnOn(8);
+    LedDriver_TurnAllOn();
     LedDriver_TurnOff(8);
-    EXPECT_EQ(0x100, virtualLeds);
+    EXPECT_EQ(0xff7f, virtualLeds);
 }
 
 
