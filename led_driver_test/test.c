@@ -82,14 +82,20 @@ TEST_F(SetupTest, UpperAndLowerBounds)
     EXPECT_EQ(0x8001, virtualLeds);
 }
 
-TEST_F(SetupTest, OutOfBoundsChangesNothing)
+TEST_F(SetupTest, OutOfBoundsChangesNothing2)
 {
     LedDriver_TurnOn(-1);
+    EXPECT_EQ(0, virtualLeds);
     LedDriver_TurnOn(0);
+    EXPECT_EQ(0, virtualLeds);
     LedDriver_TurnOn(17);
+    EXPECT_EQ(0, virtualLeds);
+    LedDriver_TurnOn(33);
+    EXPECT_EQ(0, virtualLeds);
     LedDriver_TurnOn(3141);
     EXPECT_EQ(0, virtualLeds);
 }
+
 
 int main(int argc, char** argv)
 {
