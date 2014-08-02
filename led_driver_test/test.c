@@ -96,7 +96,7 @@ TEST_F(SetupTest, OutOfBoundsChangesNothing2)
     EXPECT_EQ(0, virtualLeds);
 }
 
-TEST(SetupTest, OutOfBoundsTurnOffDoesNoHarm)
+TEST_F(SetupTest, OutOfBoundsTurnOffDoesNoHarm)
 {
     LedDriver_TurnAllOn();
     LedDriver_TurnOff(-1);
