@@ -96,6 +96,15 @@ TEST_F(SetupTest, OutOfBoundsChangesNothing2)
     EXPECT_EQ(0, virtualLeds);
 }
 
+TEST(SetupTest, OutOfBoundsTurnOffDoesNoHarm)
+{
+    LedDriver_TurnAllOn();
+    LedDriver_TurnOff(-1);
+    LedDriver_TurnOff(0);
+    LedDriver_TurnOff(17);
+    LedDriver_TurnOff(3141);
+    EXPECT_EQ(0xffff, virtualLeds);
+}
 
 int main(int argc, char** argv)
 {
